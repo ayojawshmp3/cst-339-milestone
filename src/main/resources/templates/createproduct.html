@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+	<head>
+		<meta charset="UTF-8">
+		<!-- Tab Name -->
+		<title>Create Product</title>
+	</head>
+
+	<body style="background-color:black">
+		<div layout:fragment="content">
+			<form action="#" th:action="@{newProduct}" th:object="${productModel}" method="post">
+				<table>
+					<tr>
+						<td style="color:white">Product Name:</td><td><input type="text" th:field="*{productName}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product name</h5></td>
+					</tr>
+					
+					<tr>
+						<td style="color:white">Product Price:</td><td><input type="text" th:field="*{price}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price</h5></td>
+					</tr>
+					
+					<tr>
+						<td style="color:white">Quantity:</td><td><input type="text" th:field="*{quantity}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity</h5></td>
+					</tr>			
+					<tr>
+						<td colspan="3"><input type="submit" value="Submit" /></td>
+					</tr>	
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
