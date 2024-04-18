@@ -52,16 +52,11 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- For Spring JDBC and the MySQL Database-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
-		</dependency>
+		<!-- For Spring Data MongoDB Activity 5-->
 		
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		
 	</dependencies>

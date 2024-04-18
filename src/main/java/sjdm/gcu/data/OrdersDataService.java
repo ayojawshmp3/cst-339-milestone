@@ -3,43 +3,35 @@ package sjdm.gcu.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
-import sjdm.gcu.OrderModel;
+import sjdm.gcu.data.entity.OrderEntity;
+import sjdm.gcu.data.repository.OrdersRepository;
 
 @Service
-public class OrdersDataService implements DataAccessInterface<OrderModel> {
-
+public class OrdersDataService implements DataAccessInterface<OrderEntity>{
 	@Autowired
-	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplateObject;
+	private OrdersRepository ordersRepository;
 	
-	public OrdersDataService(DataSource dataSource) {
-		this.dataSource = dataSource;
-		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+	public OrdersDataService(OrdersRepository ordersRepository) {
+		this.ordersRepository = ordersRepository;
 	}
 	
-	/**
-	 * CRUD: create an entity
-	 */
 	@Override
-	public List<OrderModel> findAll() {
-		String sql = "SELECT * FROM ORDERS";
-		List<OrderModel> orders = new ArrayList<OrderModel>();
+	public OrderEntity findById(String id) {
+		return ordersRepository.getOrderById(id);
+	}
+	
+	public List<OrderEntity> findAll() {
+		List<OrderEntity> orders = new ArrayList<OrderEntity>();
+		
 		try {
-			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
-			while(srs.next()) {
-				orders.add(new OrderModel(srs.getLong("ID"), 
-						srs.getString("ORDER_NO"),
-						srs.getString("PRODUCT_NAME"),
-						srs.getFloat("PRICE"),
-						srs.getInt("QUANTITY")));
-			}
+			Iterable<OrderEntity> ordersIterable = ordersRepository.findAll();
+			
+			// Convert to a list and return the list
+			orders = new ArrayList<OrderEntity>();
+			ordersIterable.forEach(orders::add);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -47,41 +39,24 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 		return orders;
 	}
 
-	public OrderModel findById(int id) {
-		return null;
-	}
-	
-	/**
-	 * CRUD: create an entity
-	 */
-	@Override
-	public boolean create(OrderModel order) {
-		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES(?, ?, ?, ?)";
+	public boolean create(OrderEntity order) {
 		try {
-			// Execute SQL Insert
-			int rows = jdbcTemplateObject.update(sql, 
-					order.getOrderNumber(),
-					order.getProductName(),
-					order.getPrice(),
-					order.getQuantity());
-			
-			// Return result of Insert
-			return rows == 1 ? true : false;
+			this.ordersRepository.save(order);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
-		return false;
-	}
-
-	@Override
-	public boolean update(OrderModel order) {
 		return true;
 	}
 
-	@Override
-	public boolean delete(OrderModel order) {
+	public boolean update(OrderEntity t) {
+		// TODO Auto-generated method stub
 		return true;
 	}
 
+	public boolean delete(OrderEntity t) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

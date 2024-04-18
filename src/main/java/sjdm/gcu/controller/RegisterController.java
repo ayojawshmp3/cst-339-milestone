@@ -1,4 +1,4 @@
-package sjdm.gcu;
+package sjdm.gcu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 import sjdm.gcu.business.RegistrationService;
+import sjdm.gcu.model.LoginModel;
+import sjdm.gcu.model.RegisterModel;
 
 @Controller
 @RequestMapping("/home")

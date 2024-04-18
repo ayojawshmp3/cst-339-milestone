@@ -1,4 +1,4 @@
-package sjdm.gcu;
+package sjdm.gcu.controller;
 
 import java.util.List;
 
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 import sjdm.gcu.business.OrdersBusinessServiceInterface;
+import sjdm.gcu.model.OrderModel;
+import sjdm.gcu.model.ProductModel;
 
 @Controller
 @RequestMapping("/home")
