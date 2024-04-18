@@ -1,4 +1,4 @@
-package sjdm.gcu;
+package sjdm.gcu.model;
 
 public class MensModel {
 	
