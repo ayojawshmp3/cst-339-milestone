@@ -12,20 +12,23 @@ import sjdm.gcu.business.OrdersBusinessServiceInterface;
 import sjdm.gcu.model.OrderModel;
 
 @Controller
-public class WomensController {
+@RequestMapping("/orders")
+public class OrdersController {
 	
 	@Autowired
-    private OrdersBusinessServiceInterface service;
+	private OrdersBusinessServiceInterface service;
 	
-	@GetMapping("/womens")
-	public String getWomensProducts(Model model) {
-		List<OrderModel> orders = service.getWomensOrders();
+	@GetMapping("/display")
+	public String display(Model model) {
+		// Create some orders
+		// Return Orders from the OrdersBusinessService class (Activity 1, step 15)
+		List<OrderModel> orders = service.getOrders();
 		
 		// Set Model Attributes
 		model.addAttribute("title2", "My Orders");
 		model.addAttribute("orders", orders);
 		
-		return "womens";
+		// Open orders.html
+		return "orders"; 
 	}
-
 }

@@ -24,7 +24,7 @@
 					<!-- Elements of the navigation bar -->
 					<div class="navbar-header">
 						<!-- Redirects back to home page when clicked (/home/)-->
-						<a href="/home/" class="navbar-brand" style="color:black">SJDM</a>
+						<a href="/" class="navbar-brand" style="color:black">SJDM</a>
 					</div>
 					
 					<!-- Collection of navigation links and other content for toggling. -->
@@ -32,8 +32,8 @@
 					
 						<!-- Left Side of navigation bar -->
 						<ul class="nav navbar-nav">
-							<li><a href="/home/mens" target="_blank" style="color:black">Men's</a></li>
-							<li><a href="/home/womens" target="_blank" style="color:black">Women's</a></li>
+							<li><a href="/mens" target="_blank" style="color:black">Men's</a></li>
+							<li><a href="/womens" target="_blank" style="color:black">Women's</a></li>
 						</ul>
 						
 						<!-- Right Side of navigation bar -->
@@ -41,6 +41,11 @@
 							<li><a th:href="@{product}" target="_blank" style="color:black">Create Product</a></li>
 							<li><a th:href="@{register}" target="_blank" style="color:black">Register</a></li>
 							<li><a th:href="@{login}" target="_blank" style="color:black">Login</a></li>
+							<li>
+								<form class="navbar-brand" style="color:black" th:action="@{/logout}" method="POST">
+									<input type="submit" value="Log Out"/>
+								</form>
+							</li>
 						</ul>
 					</div>
 				</nav>

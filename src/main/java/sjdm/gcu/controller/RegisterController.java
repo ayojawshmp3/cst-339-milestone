@@ -14,7 +14,6 @@ import sjdm.gcu.model.LoginModel;
 import sjdm.gcu.model.RegisterModel;
 
 @Controller
-@RequestMapping("/home")
 public class RegisterController {
 	
 	@Autowired

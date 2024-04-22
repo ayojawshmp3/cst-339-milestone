@@ -16,7 +16,6 @@ import sjdm.gcu.model.OrderModel;
 import sjdm.gcu.model.ProductModel;
 
 @Controller
-@RequestMapping("/home")
 public class ProductController {
 	@Autowired
     private OrdersBusinessServiceInterface service;

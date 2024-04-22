@@ -12,7 +12,6 @@ import sjdm.gcu.business.OrdersBusinessServiceInterface;
 import sjdm.gcu.model.OrderModel;
 
 @Controller
-@RequestMapping("/home")
 public class MensController {
 	
 	@Autowired

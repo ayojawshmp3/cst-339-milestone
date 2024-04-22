@@ -2,36 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
 	<head>
 		<meta charset="UTF-8">
-		<!-- Tab Name -->
-		<title>Login Page</title>
+		<title>Login</title>
 	</head>
-
 	<body style="background-color:black">
+		<h2>Login</h2>
 		<div layout:fragment="content">
-			<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
+			<form action="#" th:action="@{/login}" method="post">
 				<table>
 					<tr>
-						<td style="color:white">User Name:</td><td><input type="text" th:field="*{username}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name Error</h5></td>
+						<td style="color:white">User Name:</td>
+						<td style="padding:5px">
+							<input type="text" name="username" id="username" placeholder="UserName" required>
+						</td>
 					</tr>
 					<tr>
-						<td style="color:white">Password:</td><td><input type="password" th:field="*{password}" ></td><td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+						<td style="color:white">Password:</td>
+						<td style="padding:5px">
+							<input type="password" name="password" id="password" placeholder="Password" required>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="3"><input type="submit" value="Submit" /></td>
-					</tr>	
+						<td colspan="2" align="center">
+							<input type="submit" value="Sign In">
+						</td>
+					</tr>
 				</table>
-				
-				<!-- Error Message for empty parameters -->
-				<div th:if="${#fields.hasErrors('*')}">List of errors:</div>
-				<div th:each="err : ${#fields.errors('*')}">
-					<span style="color:red" th:text="${err}" class="fieldError"></span>
-				</div>
-				
-				<!-- Error Message for incorrect username and password -->
-				<div th:if="${errorMessage}" style="color:red" th:text="${errorMessage}" class="error-message"></div>
-				
-				<!-- Message displayed below login boxes-->
-				<div th:if="${newUser}" style="color:white" th:text="${newUser}" class="new-User"></div>
 			</form>
 		</div>
 	</body>
