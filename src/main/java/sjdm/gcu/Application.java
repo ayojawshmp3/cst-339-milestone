@@ -8,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan({ "sjdm.gcu" })
+
+
 public class Application {
 
 	public static void main(String[] args) {

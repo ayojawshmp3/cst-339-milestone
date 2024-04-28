@@ -20,10 +20,22 @@ public class SecurityConfig {
 	@Autowired
 	private UsersBusinessService service;
 	
+	/**
+	 * Constructor to inject UsersBusinessService.
+	 *
+	 * @param service UsersBusinessService instance
+	 */
 	public SecurityConfig(UsersBusinessService service) {
         this.service = service;
     }
 	
+	/**
+	 * Configures security filter chain for HTTP requests.
+	 *
+	 * @param http HttpSecurity object
+	 * @return SecurityFilterChain object
+	 * @throws Exception if configuration fails
+	 */
 	@SuppressWarnings("removal")
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -47,7 +59,7 @@ public class SecurityConfig {
                                 .permitAll()
                                 .logoutSuccessUrl("/"));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					// Exception handling
 					e.printStackTrace();
 				}
 			})
@@ -55,19 +67,36 @@ public class SecurityConfig {
         return http.build();
     }
 	
+	/**
+	 * Customizes HttpBasicConfigurer.
+	 *
+	 * @return Customizer for HttpBasicConfigurer
+	 */
 	private Customizer<HttpBasicConfigurer<HttpSecurity>> withDefaults() {
 	    return httpBasic -> httpBasic
 	            .realmName("Custom Realm")
 	            .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
 	}
     
+	/**
+	 * Configures authentication manager builder.
+	 *
+	 * @param auth AuthenticationManagerBuilder object
+	 * @throws Exception if configuration fails
+	 */
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 		.userDetailsService(service)
 		.passwordEncoder(passwordEncoder());
 	}
+
 	
+	/**
+	 * Creates an instance of BCryptPasswordEncoder.
+	 *
+	 * @return BCryptPasswordEncoder instance
+	 */
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

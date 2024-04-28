@@ -15,19 +15,35 @@ import org.springframework.stereotype.Service;
 import sjdm.gcu.data.UsersDataService;
 import sjdm.gcu.data.entity.UserEntity;
 
+/**
+ * Service class for managing users in the business layer.
+ */
 @Service
 public class UsersBusinessService implements UserDetailsService {
-	@Autowired
-	private UsersDataService service;
 
-	public UsersBusinessService(UsersDataService service) {
-		super();
-		this.service = service;
-	}
+    /**
+     * Data service for accessing user data.
+     */
+    @Autowired
+    private UsersDataService service;
 
-	/**
-	 * This method is overridden from the base class and is used to support Spring Security user authentication
-	 * */
+    /**
+     * Constructor to inject UsersDataService.
+     *
+     * @param service UsersDataService instance
+     */
+    public UsersBusinessService(UsersDataService service) {
+        super();
+        this.service = service;
+    }
+
+    /**
+     * This method is overridden from the base class and is used to support Spring Security user authentication.
+     *
+     * @param username the username to load the user by
+     * @return UserDetails containing user details
+     * @throws UsernameNotFoundException if the username is not found
+     */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// Try to find the User in the database. If not found, throw a User Not Found exception else return a Spring Security User.

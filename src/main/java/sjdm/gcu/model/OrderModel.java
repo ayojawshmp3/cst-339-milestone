@@ -2,69 +2,153 @@ package sjdm.gcu.model;
 
 import org.springframework.data.annotation.Id;
 
+/**
+ * Model class representing an order.
+ */
 public class OrderModel {
-	
-	// Instantiate Private Variables for a product
-	@Id
-	String id = "";
-	String orderNo = "";
-	String productName = "";
-	float price = 0;
-	int quantity = 0;
-	
-	public OrderModel() {
-		this.id = "";
-		this.orderNo = "";
-		this.productName = "";
-		this.price = 0;
-		this.quantity = 0;
-	}
 
-	public OrderModel(String id, String orderNo, String productName, float price, int quantity){
-		this.id = id;
-		this.orderNo = orderNo;
-		this.productName = productName;
-		this.price = price;
-		this.quantity = quantity;
-	}
+    /**
+     * Unique identifier.
+     */
+    @Id
+    String id = "";
 
-	public String getId() {
-		return id;
-	}
+    /**
+     * Order number.
+     */
+    String orderNo = "";
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * Product name.
+     */
+    String productName = "";
 
-	public String getOrderNo() {
-		return orderNo;
-	}
+    /**
+     * Price of the product.
+     */
+    float price = 0;
 
-	public void setOrderNo(String orderNo) {
-		this.orderNo = orderNo;
-	}
+    /**
+     * Quantity of the product.
+     */
+    int quantity = 0;
 
-	public String getProductName() {
-		return productName;
-	}
+    /**
+     * Default constructor.
+     */
+    public OrderModel() {
+        this.id = "";
+        this.orderNo = "";
+        this.productName = "";
+        this.price = 0;
+        this.quantity = 0;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    /**
+     * Parameterized constructor.
+     *
+     * @param id         the order ID
+     * @param orderNo    the order number
+     * @param productName   the product name
+     * @param price      the price of the product
+     * @param quantity   the quantity of the product
+     */
+    public OrderModel(String id, String orderNo, String productName, float price, int quantity) {
+        this.id = id;
+        this.orderNo = orderNo;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
-	public float getPrice() {
-		return price;
-	}
+    /**
+     * Retrieves the order ID.
+     *
+     * @return the order ID
+     */
+    public String getId() {
+        return id;
+    }
 
-	public void setPrice(float price) {
-		this.price = price;
-	}
+    /**
+     * Sets the order ID.
+     *
+     * @param id the order ID to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    /**
+     * Retrieves the order number.
+     *
+     * @return the order number
+     */
+    public String getOrderNo() {
+        return orderNo;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    /**
+     * Sets the order number.
+     *
+     * @param orderNo the order number to set
+     */
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    /**
+     * Retrieves the product name.
+     *
+     * @return the product name
+     */
+    public String getProductName() {
+        return productName;
+    }
+
+    /**
+     * Sets the product name.
+     *
+     * @param productName the product name to set
+     */
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    /**
+     * Retrieves the price of the product.
+     *
+     * @return the price of the product
+     */
+    public float getPrice() {
+        return price;
+    }
+
+    /**
+     * Sets the price of the product.
+     *
+     * @param price the price of the product to set
+     */
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    /**
+     * Retrieves the quantity of the product.
+     *
+     * @return the quantity of the product
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * Sets the quantity of the product.
+     *
+     * @param quantity the quantity of the product to set
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
+
