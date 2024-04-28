@@ -31,6 +31,9 @@
 			<!-- Accessed in home.html via 'content' -->
 			<section layout:fragment="content">
 				<p style="color:red">Upgrade your wardrobe with JDM and anime apparel!</p>
+					<div layout:fragment="~{content}">
+			   			 <a th:href="@{/app/orders}">View All Orders</a><br/>
+					</div>
 			</section>
 			
 			<!-- Insert Footer Fragment -->

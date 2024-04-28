@@ -13,7 +13,9 @@ public class UserEntity {
 	String password;
 	
 	UserEntity() {
-		// Default Constructor
+		this.id = "";
+		this.username = "";
+		this.password = "";
 	}
 	
 	public UserEntity(String id, String username, String password) {

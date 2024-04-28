@@ -39,7 +39,7 @@ public class SecurityConfig {
                                 .usernameParameter("username")
                                 .passwordParameter("password")
                                 .permitAll()
-                                .defaultSuccessUrl("/orders/display", true))
+                                .defaultSuccessUrl("/app/orders", true))
                         .logout(logout -> logout
                                 .logoutUrl("/logout")
                                 .invalidateHttpSession(true)

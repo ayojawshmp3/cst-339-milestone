@@ -1,30 +1,26 @@
-package sjdm.gcu.data.entity;
+package sjdm.gcu.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="mens")
-public class MensEntity {
+public class WomensModel {
+	
+	// Instantiate Private Variables for a product
 	@Id
-	String id;
+	String id = "";
+	String orderNo = "";
+	String productName = "";
+	float price = 0;
+	int quantity = 0;
 	
-	@Indexed(unique=true)
-	String orderNo;
-	
-	@Indexed(unique=true)
-	String productName;
-	
-	float price;
-	
-	int quantity;
-	
-	public MensEntity() {
-		// default constructor
+	public WomensModel() {
+		this.id = "";
+		this.orderNo = "";
+		this.productName = "";
+		this.price = 0;
+		this.quantity = 0;
 	}
 
-	public MensEntity(String id, String orderNo, String productName, float price, int quantity) {
-		super();
+	public WomensModel(String id, String orderNo, String productName, float price, int quantity){
 		this.id = id;
 		this.orderNo = orderNo;
 		this.productName = productName;
